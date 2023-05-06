@@ -15,6 +15,14 @@ const io = new Server(server,{
     }
 })
 
+io.on("connection",(socket)=>{
+    console.log(socket.id)
+
+    socket.on("message",(data)=>{
+        console.log("receive message : ",data)
+    })
+})
+
 const PORT = 1117
 
 server.listen(PORT,()=>{
