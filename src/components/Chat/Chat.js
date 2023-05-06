@@ -1,6 +1,10 @@
 import React from 'react';
 
 function Chat({socket}) {
+    
+    socket.on("botResponse",(messageFromBot)=>{
+        console.log("received message from bot : ",messageFromBot.message)
+    })
 
     const sendMessage = () => {
         socket.emit("message",

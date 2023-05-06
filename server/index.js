@@ -16,10 +16,9 @@ const io = new Server(server,{
 })
 
 io.on("connection",(socket)=>{
-    console.log(socket.id)
-
     socket.on("message",(data)=>{
-        console.log("receive message : ",data)
+        console.log("received message : ",data)
+        socket.emit('botResponse',{message:"Hi! My Name's Botty"})
     })
 })
 
