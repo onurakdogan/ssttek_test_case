@@ -8,7 +8,7 @@ const socket = io.connect("http://localhost:1117");
 function App() {
   return (
     <div className="App">
-       <Chat socket={socket} />
+       <Chat socket={socket}/>
     </div>
   );
 }

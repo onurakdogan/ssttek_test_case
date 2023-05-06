@@ -15,10 +15,16 @@ const io = new Server(server,{
     }
 })
 
+const message = {
+    isBotty:true,
+    message:"Hi! My Name's Botty"
+}
+
 io.on("connection",(socket)=>{
+
     socket.on("message",(data)=>{
-        console.log("received message : ",data)
-        socket.emit('botResponse',{message:"Hi! My Name's Botty"})
+        console.log("received message : ",data.message)
+        socket.emit('botResponse',message)
     })
 })
 

@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Chat({socket}) {
-    
-    socket.on("botResponse",(messageFromBot)=>{
-        console.log("received message from bot : ",messageFromBot.message)
-    })
+    const [messageList,setMessageList] = useState([])
 
-    const sendMessage = () => {
-        socket.emit("message",
-          {message:"first message"}
-        )
+    useEffect(()=>{
+        socket.on("botResponse",(messageFromBot)=>{
+            setMessageList((prev)=>[...prev,messageFromBot])
+        })
+    },[socket])
+
+    const sendMessage = async () => { 
+        const message = {
+            isBotty:false,
+            message:"first message"
+        }
+        await socket.emit("message",message)
+        setMessageList((prev)=>[...prev,message])
+
     }
 
     return (
         <div>
            <input placeholder='username'/> 
            <button onClick={sendMessage}>Send</button>
+            Messages :
+            {
+                messageList.map((item,index)=>(
+                    <div key={index}>
+                        {item.message}
+                    </div>
+                ))
+            }
         </div>
     );
 }
