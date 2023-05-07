@@ -1,14 +1,15 @@
 import React, { useEffect, useState,useRef } from 'react';
-
+import { userList } from '../../utils/Api/Users/UserList';
 import sound from "../../assets/audio/send-message.mp3";
 const audio = new Audio();
 
 function Chat({socket}) {
-
- 
+    console.log("deneme",userList)
     const messageEl = useRef(null);
+    const [role,setRole] = useState("");
+
     const [value,setValue] = useState("");
-    const [messageList,setMessageList] = useState([])
+    const [messageList,setMessageList] = useState([]);
     const [typingBot,setTypingBot] = useState(null);
 
     useEffect(()=>{
@@ -23,12 +24,13 @@ function Chat({socket}) {
         socket.on("botResponse",(messageFromBot)=>{
             setMessageList((prev)=>[...prev,messageFromBot])
         })
+
+        socket.on("typingBot",(data)=>{
+            data ? setTypingBot(true) : setTypingBot(false)
+        })
+        
        
     },[socket])
-
-    socket.on("typingBot",(data)=>{
-        data ? setTypingBot(true) : setTypingBot(false)
-    })
 
     const typingMessage = (e) => {
           setValue(e.target.value)
@@ -37,7 +39,7 @@ function Chat({socket}) {
     const sendMessage = async () => { 
         const message = {
             isBotty:false,
-            message:"first message"
+            message:value
         }
         socket.emit("message",message)
         setMessageList((prev)=>[...prev,message])

@@ -23,10 +23,13 @@ const message = {
 io.on("connection", async (socket)=>{
         
     socket.on("message",async (data)=>{
+
         socket.emit("typingBot", true);
         await new Promise(resolve => setTimeout(resolve, (Math.random() * 3000)+1000));
-        socket.emit('botResponse',message)
+        socket.emit('botResponse',message);
         socket.emit("typingBot",false);
+       
+
     })
 })
 
