@@ -1,10 +1,15 @@
 import React, { useEffect, useState,useRef } from 'react';
+import {connect} from 'react-redux';
+
+import {addMessage,getMessage,getTyping} from '../../store/actions/Messages/Messages';
 import { userList } from '../../utils/Api/Users/UserList';
 import sound from "../../assets/audio/send-message.mp3";
 const audio = new Audio();
 
-function Chat({socket}) {
-    console.log("deneme",userList)
+function Chat(props) {
+    const {messages,getMessage,latestMessage,isTyping} = props.MessagesToProps ;  
+    const {socket} = props;
+ 
     const messageEl = useRef(null);
     const [role,setRole] = useState("");
 
@@ -22,15 +27,17 @@ function Chat({socket}) {
         }
 
         socket.on("botResponse",(messageFromBot)=>{
-            setMessageList((prev)=>[...prev,messageFromBot])
+            props.addMessage(messageFromBot)
+
         })
 
         socket.on("typingBot",(data)=>{
-            data ? setTypingBot(true) : setTypingBot(false)
+            data ? props.getTyping(true) : props.getTyping(false)
+
         })
         
        
-    },[socket])
+    },[])
 
     const typingMessage = (e) => {
           setValue(e.target.value)
@@ -42,7 +49,7 @@ function Chat({socket}) {
             message:value
         }
         socket.emit("message",message)
-        setMessageList((prev)=>[...prev,message])
+        props.addMessage(message)
         setValue("")
         audio.src = sound
         audio.play(); 
@@ -52,22 +59,33 @@ function Chat({socket}) {
         <div>
            <input placeholder='username' value={value} name="message" onChange={(e)=>{typingMessage(e)}}/> 
            <button onClick={sendMessage}>Send</button>
+            
             Messages :
             <div ref={messageEl} style={{display:"flex",flexDirection:"column",maxHeight:"100px",backgroundColor:"#ddd",overflowY:"scroll"}}>
             {
-                messageList.map((item,index)=>(
+                messages.map((item,index)=>(
                     <div key={index}>
                         {item.message}
                     </div>
                 ))
             }
             </div>
+ 
 
             {
-                typingBot ? <div>Typing ... </div> : null
+                isTyping ? <div>Typing ... </div> : null
+            }
+                latest message : 
+            {
+                latestMessage
             }
         </div>
     );
 }
 
-export default Chat;
+
+const mapStateToProps = (state) => ({ 
+    MessagesToProps: state.MessagesReducer
+  });
+  
+  export default connect(mapStateToProps,{addMessage,getMessage,getTyping})(Chat);

@@ -18,10 +18,6 @@ const io = new Server(server,{
     }
 })
 
-
-
-
-
 io.on("connection", async (socket)=>{
         
     const sendRandomMessage = async () => {
@@ -42,7 +38,6 @@ io.on("connection", async (socket)=>{
         await new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * 3000)+1000));
         await sendRandomMessage();
         socket.emit("typingBot",false);
-       
 
     })
 })
