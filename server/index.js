@@ -20,11 +20,13 @@ const message = {
     message:"Hi! My Name's Botty"
 }
 
-io.on("connection",(socket)=>{
-
-    socket.on("message",(data)=>{
-        console.log("received message : ",data.message)
+io.on("connection", async (socket)=>{
+        
+    socket.on("message",async (data)=>{
+        socket.emit("typingBot", true);
+        await new Promise(resolve => setTimeout(resolve, (Math.random() * 3000)+1000));
         socket.emit('botResponse',message)
+        socket.emit("typingBot",false);
     })
 })
 
