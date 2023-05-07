@@ -1,3 +1,6 @@
+
+const MessageList = require("../src/utils/Api/Messages/MessageList");
+
 const express  = require("express")
 const cors = require("cors")
 const http = require("http")
@@ -15,18 +18,29 @@ const io = new Server(server,{
     }
 })
 
-const message = {
-    isBotty:true,
-    message:"Hi! My Name's Botty"
-}
+
+
+
 
 io.on("connection", async (socket)=>{
         
+    const sendRandomMessage = async () => {
+      
+          let index = Math.floor((Math.random() * MessageList.length-1)+0)
+    
+          const message = {
+            isBotty:true,
+            message:MessageList[index].name 
+          }
+    
+          socket.emit('botResponse',message);
+    }
+
     socket.on("message",async (data)=>{
 
         socket.emit("typingBot", true);
-        await new Promise(resolve => setTimeout(resolve, (Math.random() * 3000)+1000));
-        socket.emit('botResponse',message);
+        await new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * 3000)+1000));
+        await sendRandomMessage();
         socket.emit("typingBot",false);
        
 
