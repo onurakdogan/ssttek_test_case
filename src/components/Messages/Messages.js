@@ -15,22 +15,20 @@ const audio = new Audio();
 
 function Messages(props) {
 
-    const {messages,getMessage,latestMessage,isTyping} = props.MessagesToProps ;  
-    const {socket} = props;
+    const {socket,messages,getMessage,latestMessage,isTyping} = props.MessagesToProps ;  
  
     const messageEl = useRef(null);
-    const [role,setRole] = useState("");
-
     const [value,setValue] = useState("");
-    const [messageList,setMessageList] = useState([]);
-    const [typingBot,setTypingBot] = useState(null);
     
     useEffect(()=>{
          socket.on("play",(data)=>{
             audio.src = data;
             audio.play(); 
         })
-        
+
+        return () => {
+            socket.off("play");
+        }
     },[])
 
     useEffect(()=>{

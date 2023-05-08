@@ -3,6 +3,7 @@ import {GET_TYPING,ADD_MESSAGES,GET_MESSAGES} from '../../actions/Types';
 import { io } from 'socket.io-client';
 
 const INITIAL_STATE = {
+socket:io.connect("http://localhost:1117"),
 messages:[],
 latestMessage:"",
 isTyping:false,
@@ -12,7 +13,7 @@ isTyping:false,
 
 export default function MessagesReducer(state = INITIAL_STATE,action)  {
 const {type} = action;
-const {messages,latestMessage,isTyping} = state ;
+const {socket,messages,latestMessage,isTyping} = state ;
 
 switch(type){
     case GET_MESSAGES :
