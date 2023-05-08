@@ -3,8 +3,18 @@
   justify-content: center;
   flex-direction: column;
   width:25%;
-  height: 100vh;
   overflow-y: scroll;
+}
+.list-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92px;
+}
+.list-wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
 }
 .list-item-wrapper{
   display: flex;
@@ -13,7 +23,7 @@
   cursor: pointer;
 }
 .list-item-wrapper:first-child{
-  background: #ddd;
+  background: #1E253214;
 }
 .list-item{
   display: flex;

@@ -50,8 +50,6 @@ function CompanyInformation(props) {
 
                 </div>
 
-
-
             </div>
             
 

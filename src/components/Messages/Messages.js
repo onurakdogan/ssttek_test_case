@@ -9,6 +9,7 @@ import receiveSound from "../../assets/audio/send-message.mp3";
 import sendSound from "../../assets/audio/message.mp3";
 import Attach from "../../assets/img/attach.png";
 import Smile from "../../assets/img/smile_face.png";
+import MessageHeader from './MessageHeader/MessageHeader';
 
 const audio = new Audio();
 
@@ -72,6 +73,7 @@ function Messages(props) {
 
     return (
         <div className='messages-main-wrapper'>
+            <MessageHeader/>
             <div className='messages-wrapper' ref={messageEl}>
                     {
                         messages.map((item,index)=>(

@@ -1,0 +1,22 @@
+ .profile-main-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 92px;
+ }
+ .profile-wrapper{
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+ }
+ .info-wrapper{
+    margin-left: 20px;
+ }
+ .online-wrapper{
+    display: flex;
+    align-items: center;
+ }
+ .botty-info-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+ }

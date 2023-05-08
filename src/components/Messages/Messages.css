@@ -6,7 +6,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 78vh;
     overflow-y: scroll;
     background: #F4F8FF;
 }
