@@ -3,8 +3,8 @@ import React, { useEffect, useState,useRef } from 'react';
 import './Messages.css';
 
 import {connect} from 'react-redux';
-
 import {addMessage,getMessage,getTyping} from '../../store/actions/Messages/Messages';
+
 import receiveSound from "../../assets/audio/send-message.mp3";
 import sendSound from "../../assets/audio/message.mp3";
 
@@ -85,13 +85,7 @@ function Messages(props) {
                     }
  
 
-                    {/* {
-                        isTyping ? <div>Typing ... </div> : null
-                    }
-                        latest message : 
-                    {
-                        latestMessage
-                    } */}
+                 
                      
               
                 {/* message section */}
@@ -102,7 +96,7 @@ function Messages(props) {
             <div className='send-message'>
                   <div className='message-input-wrapper'>
                     <input className='message-input' placeholder='write a message ...' value={value} name="message" onChange={(e)=>{typingMessage(e)}}/> 
-                    <button onClick={sendMessage}>Send</button>
+                    <button className='send-button' onClick={sendMessage}>Send</button>
                   </div> 
             </div>
 

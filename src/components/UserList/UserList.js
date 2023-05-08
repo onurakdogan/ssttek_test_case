@@ -1,8 +1,14 @@
 import { userList } from '../../utils/Api/Users/UserList';
 import './UserList.css';
-import Profile from '../../assets/img/profile1.png'
+import Profile from '../../assets/img/profile1.png';
 
-export default function UserList() {
+
+import {connect} from 'react-redux';
+import {addMessage,getMessage,getTyping} from '../../store/actions/Messages/Messages';
+
+ function UserList(props) {
+  const {messages,getMessage,latestMessage,isTyping} = props.MessagesToProps ;  
+
   return (
       <div className='list-main-wrapper'>
         
@@ -22,7 +28,9 @@ export default function UserList() {
                         }
                       </div>
                       <div className='last-message'>
-                        <div>Last Message</div>
+                            
+                        <div>{item.userId == "bot" ? isTyping ? "Typing ..."  : latestMessage : item.lastMessage}</div>
+
                       </div>
                   </div>
 
@@ -34,3 +42,10 @@ export default function UserList() {
       
   );
 }
+
+
+const mapStateToProps = (state) => ({ 
+  MessagesToProps: state.MessagesReducer
+});
+
+export default connect(mapStateToProps,{addMessage,getMessage,getTyping})(UserList);

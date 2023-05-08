@@ -29,6 +29,11 @@
 .message-input:focus{
     outline: none;
 }
+.message-input::placeholder{
+    color:#01AAF3;
+}
+
+
 .sender{
    display: flex;
    justify-content: flex-end;
@@ -56,4 +61,10 @@
     color: #ffff;
     margin-bottom: 20px;
     width: fit-content;
+}
+.send-button{
+    border: none;
+    background: none;
+    color:#51515173;
+    font-weight: 700;
 }
