@@ -2,7 +2,6 @@ import React, { useEffect, useState,useRef } from 'react';
 import {connect} from 'react-redux';
 
 import {addMessage,getMessage,getTyping} from '../../store/actions/Messages/Messages';
-import { userList } from '../../utils/Api/Users/UserList';
 import sound from "../../assets/audio/send-message.mp3";
 const audio = new Audio();
 
@@ -64,7 +63,7 @@ function Chat(props) {
             <div ref={messageEl} style={{display:"flex",flexDirection:"column",maxHeight:"100px",backgroundColor:"#ddd",overflowY:"scroll"}}>
             {
                 messages.map((item,index)=>(
-                    <div key={index}>
+                    <div key={index} style={{width:"100%",background:"brown"}}>
                         {item.message}
                     </div>
                 ))

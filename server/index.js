@@ -22,8 +22,7 @@ io.on("connection", async (socket)=>{
         
     const sendRandomMessage = async () => {
       
-          let index = Math.floor((Math.random() * MessageList.length-1)+0)
-    
+          let index = Math.floor((Math.random() * (MessageList.length-1))+0)
           const message = {
             isBotty:true,
             message:MessageList[index].name 
@@ -31,6 +30,10 @@ io.on("connection", async (socket)=>{
     
           socket.emit('botResponse',message);
     }
+    
+     
+    socket.emit('botResponse',{isBotty:true,message:MessageList[0].name});
+
 
     socket.on("message",async (data)=>{
 
@@ -40,6 +43,11 @@ io.on("connection", async (socket)=>{
         socket.emit("typingBot",false);
 
     })
+
+    socket.on("play",(data)=>{
+       io.emit("play",data)
+    })
+
 })
 
 const PORT = 1117

@@ -1,0 +1,52 @@
+.company-main-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+.company-logo-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 218px;
+    color:#000000;
+    width: 100%;
+    background: #1E2532;
+   
+}
+.company-logo{
+    width: 177px;
+    height: 40px;
+}
+.company-site{
+    font-size: 20px;
+}
+.contact-wrapper{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+}
+.contact-email{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+.contact-phone{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+.contact-info{
+    font-weight: bold;
+}
+.contact-react{
+    display: flex;
+    margin-left: 30px;
+    margin-top: 20px;
+
+}
+.react{
+    margin-top: 100px;
+}
