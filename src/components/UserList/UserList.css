@@ -3,6 +3,7 @@
   justify-content: center;
   flex-direction: column;
   width:25%;
+  min-width: 350px;
   overflow-y: scroll;
 }
 .list-header{

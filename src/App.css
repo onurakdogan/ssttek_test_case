@@ -1,3 +1,27 @@
 p{
     margin: 0px;
 }
+.components-wrapper {
+   display: flex;
+}
+@media only screen and (max-width: 1200px) {
+    .components-wrapper {
+      flex-wrap: wrap;
+    }
+    .messages-main-wrapper{
+        width: 70.5% !important;
+        flex-shrink: 0;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .components-wrapper {
+      flex-direction: column;
+    }
+    .messages-main-wrapper{
+        width: 100% !important;
+    }
+    .list-main-wrapper,.company-main-wrapper{
+        width: 100% !important;
+    }
+}
