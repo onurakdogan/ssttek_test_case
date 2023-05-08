@@ -6,15 +6,18 @@ p{
 }
 @media only screen and (max-width: 1200px) {
     .components-wrapper {
+      width: 100% !important;
       flex-wrap: wrap;
     }
+    .company-main-wrapper{
+        width: 100% !important;
+    }
     .messages-main-wrapper{
-        width: 70.5% !important;
-        flex-shrink: 0;
+        flex-grow:1;
     }
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 900px) {
     .components-wrapper {
       flex-direction: column;
     }
@@ -23,5 +26,20 @@ p{
     }
     .list-main-wrapper,.company-main-wrapper{
         width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .components-wrapper {
+      flex-direction: column;
+    }
+    .messages-main-wrapper,.list-main-wrapper,.company-main-wrapper{
+        width: 100% !important;
+    }
+    .profile-wrapper{
+        flex-wrap: wrap;
+    }
+    .react{
+        width: 80px !important;
     }
 }

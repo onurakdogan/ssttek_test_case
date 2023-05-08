@@ -31,7 +31,7 @@ function MessageHeader(props) {
                    </div>
 
                    
-                  <div style={{display:"flex",gap:20}}>
+                  <div style={{display:"flex",gap:20,marginLeft:5}}>
                     <div className='botty-info-wrapper'>
                         <img src={Eye} style={{height:15,width:20,objectFit:"contain"}} />
                         <p>botty-beep-boop</p>

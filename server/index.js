@@ -34,14 +34,11 @@ io.on("connection", async (socket)=>{
      
     socket.emit('botResponse',{isBotty:true,message:MessageList[0].name});
 
-
     socket.on("message",async (data)=>{
-
         socket.emit("typingBot", true);
         await new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * 3000)+1000));
         await sendRandomMessage();
         socket.emit("typingBot",false);
-
     })
 
     socket.on("play",(data)=>{

@@ -43,12 +43,10 @@ function Messages(props) {
         socket.on("botResponse",(messageFromBot)=>{
             props.addMessage(messageFromBot)
             socket.emit("play",receiveSound)
-
         })
 
         socket.on("typingBot",(data)=>{
             data ? props.getTyping(true) : props.getTyping(false)
-
         })
         
        
@@ -92,7 +90,6 @@ function Messages(props) {
                     <button className='send-button' onClick={sendMessage}>Send</button>
                   </div> 
             </div>
-
 
         </div>
     );
