@@ -31,24 +31,25 @@ function CompanyInformation(props) {
                 </div>
 
                 <div className='contact-react'>
-                    <button>Bot</button>
-                    <button>React</button>
+                    <button className='contact-button'>Bot</button>
+                    <button className='contact-button'>React</button>
                 </div>
             </div>
 
-            <div className='contact-wrapper'>
+            <div className='contact-wrapper' style={{border:"none"}}>
                 <div className='contact-email'>
                 <p>ATTACHMENTS</p>
                 </div>
 
-                <div className='contact-email'>
+                <div className='contact-media'>
                     <ul>
                         <li>Dataset.csv</li>
                         <li>bot_face.jpg</li>
                     </ul>
+                    <p className='view-all'>View All</p>
+
                 </div>
 
-                <p>View All</p>
 
 
             </div>
