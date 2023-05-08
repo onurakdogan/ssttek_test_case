@@ -11,7 +11,7 @@ const socket = io.connect("http://localhost:1117");
 function App() {
   return (
     <div className="App">
-       <div style={{display:"flex"}}>
+       <div style={{display:"flex",flexWrap:"wrap"}}>
           <UserList/>
           <Messages socket={socket} />
           <CompanyInformation/>

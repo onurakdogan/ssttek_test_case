@@ -7,6 +7,8 @@ import {addMessage,getMessage,getTyping} from '../../store/actions/Messages/Mess
 
 import receiveSound from "../../assets/audio/send-message.mp3";
 import sendSound from "../../assets/audio/message.mp3";
+import Attach from "../../assets/img/attach.png";
+import Smile from "../../assets/img/smile_face.png";
 
 const audio = new Audio();
 
@@ -71,9 +73,6 @@ function Messages(props) {
     return (
         <div className='messages-main-wrapper'>
             <div className='messages-wrapper' ref={messageEl}>
-                {/* messages */}
-               
-
                     {
                         messages.map((item,index)=>(
                             <div key={index} className={item.isBotty ? "receiver" : "sender"}>
@@ -83,19 +82,13 @@ function Messages(props) {
                             </div>
                         ))
                     }
- 
-
-                 
-                     
-              
-                {/* message section */}
-
-               
             </div>
 
             <div className='send-message'>
                   <div className='message-input-wrapper'>
                     <input className='message-input' placeholder='write a message ...' value={value} name="message" onChange={(e)=>{typingMessage(e)}}/> 
+                    <img src={Smile} style={{width:20,height:20,marginRight:15}}/>
+                    <img src={Attach} style={{width:20,height:20,marginRight:15}}/>
                     <button className='send-button' onClick={sendMessage}>Send</button>
                   </div> 
             </div>
